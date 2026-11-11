@@ -1,0 +1,31 @@
+
+# FRONTEND - REACT + VITE
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# BACKEND - FASTAPI + PYTHON
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+
+# DATABASE LOKAL
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
+
+
+# PYTHON CACHE
+*.pyc
+*.pyo
+.pytest_cache/
+
+# SYSTEM
+.DS_Store
+Thumbs.db

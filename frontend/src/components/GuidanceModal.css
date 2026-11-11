@@ -1,0 +1,549 @@
+/* GuidanceModal.css */
+
+.guidance-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2100;
+  padding: 1.5rem;
+  animation: fadeInOverlay 0.3s ease-out forwards;
+}
+
+.guidance-modal-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  max-width: 600px;
+  width: 100%;
+  padding: 2.25rem;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  animation: slideInModal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.guidance-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: rgba(241, 245, 249, 0.8);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gray);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.guidance-modal-close:hover {
+  background: var(--light-gray);
+  color: var(--dark);
+  transform: rotate(90deg);
+}
+
+.guidance-modal-header {
+  margin-bottom: 1.5rem;
+}
+
+.guidance-modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.guidance-modal-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+/* Stepper progress */
+.guidance-stepper-container {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.guidance-stepper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.guidance-stepper-line-bg {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 3px;
+  background: #f1f5f9;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.guidance-stepper-line-fill {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transform: translateY(-50%);
+  z-index: 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.guidance-step-node {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 3px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--gray);
+  z-index: 2;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.guidance-step-node.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.2);
+}
+
+.guidance-step-node.completed {
+  border-color: var(--secondary);
+  background: var(--secondary);
+  color: var(--white);
+}
+
+/* Content Area */
+.guidance-content-wrapper {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+}
+
+.guidance-step-detail {
+  animation: fadeInStep 0.35s ease-out forwards;
+}
+
+@keyframes fadeInStep {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.guidance-step-intro {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.guidance-icon-wrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guidance-icon-wrapper.step-1 {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+
+.guidance-icon-wrapper.step-2 {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--secondary);
+}
+
+.guidance-icon-wrapper.step-3 {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+}
+
+.guidance-icon-wrapper.step-4 {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--accent);
+}
+
+.guidance-step-text h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.35rem;
+}
+
+.guidance-step-text p {
+  font-size: 0.925rem;
+  color: var(--gray);
+  line-height: 1.55;
+}
+
+/* Mockups inside stepper steps */
+.guidance-step-visual {
+  background: var(--light-gray);
+  border-radius: 14px;
+  padding: 1rem;
+  border: 1px dashed rgba(203, 213, 225, 0.8);
+  margin-top: 0.5rem;
+}
+
+/* Step 1 Visual Mockup */
+.mock-registration {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mock-input {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  width: 75%;
+}
+.mock-input.short {
+  width: 40%;
+}
+.mock-q-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+}
+.mock-q-badge {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.65rem;
+}
+
+/* Step 2 Visual Mockup */
+.mock-preferences {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.mock-preference-pill {
+  padding: 0.3rem 0.75rem;
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.75rem;
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+.mock-preference-pill.selected {
+  border-color: var(--secondary);
+  background: var(--secondary);
+  color: white;
+}
+
+/* Step 3 Visual Mockup */
+.mock-materials {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mock-material-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 0.75rem;
+}
+.mock-btn-complete {
+  background: #10B981;
+  color: white;
+  border: none;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Step 4 Visual Mockup */
+.mock-posttest {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.mock-stars {
+  display: flex;
+  gap: 0.25rem;
+  color: var(--accent);
+  font-size: 1rem;
+}
+.mock-badge-success {
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Footer & Controls */
+.guidance-modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.guidance-dont-show-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gray);
+  cursor: pointer;
+  user-select: none;
+}
+
+.guidance-dont-show-checkbox input {
+  cursor: pointer;
+  accent-color: var(--primary);
+  width: 15px;
+  height: 15px;
+}
+
+.guidance-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.guidance-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.guidance-btn-prev {
+  background: #f1f5f9;
+  color: var(--gray);
+}
+
+.guidance-btn-prev:hover {
+  background: #e2e8f0;
+  color: var(--dark);
+}
+
+.guidance-btn-next {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.guidance-btn-next:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.35);
+}
+
+.guidance-btn-finish {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+.guidance-btn-finish:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.45);
+}
+
+/* Floating help trigger button */
+.guidance-floating-trigger {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.8rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.guidance-floating-trigger:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(59, 130, 246, 0.5);
+}
+
+.guidance-floating-trigger:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Pulsing dot indicator for floating guide */
+.guidance-pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  position: relative;
+}
+
+.guidance-pulse-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent);
+  border-radius: 50%;
+  animation: guidancePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes guidancePulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .guidance-modal-card {
+    padding: 1.5rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  
+  .guidance-modal-card h2 {
+    font-size: 1.25rem;
+  }
+  
+  .guidance-stepper-container {
+    margin: 1.25rem 0;
+  }
+  
+  .guidance-step-intro {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .guidance-content-wrapper {
+    min-height: 280px;
+  }
+
+  .guidance-modal-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .guidance-controls {
+    justify-content: space-between;
+  }
+  
+  .guidance-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .guidance-floating-trigger {
+    bottom: 5.5rem; /* give space above mobile bottom bar */
+    right: 1.5rem;
+    padding: 0.7rem 1.1rem;
+    font-size: 0.8rem;
+  }
+}
